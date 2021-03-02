@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
 
-    private bool doMovement = true;
+    //private bool doMovement = true;
     public float panSpeed = 30f;
     public float scrollSpeed = 5f;
     public float minY = 10f, maxY = 80f;
@@ -19,14 +19,15 @@ public class CameraController : MonoBehaviour
             this.enabled = false;
             return;
         }
-        if (Input.GetKeyDown (KeyCode.Escape))
-        {
-            doMovement = !doMovement;
-        }
-        if (doMovement == false)
-        {
-            return;
-        }
+        //test
+        // if (Input.GetKeyDown (KeyCode.Escape))
+        // {
+        //     doMovement = !doMovement;
+        // }
+        // if (doMovement == false)
+        // {
+        //     return;
+        // }
         #region CameraMovement
         if (Input.GetKey("w") || Input.mousePosition.y >= Screen.height-panBoarderThickness)
         {

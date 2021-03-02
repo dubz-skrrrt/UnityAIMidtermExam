@@ -95,6 +95,26 @@ public class Node : MonoBehaviour
         isUpgraded = true;
         Debug.Log("Turret Upgraded");
     }
+
+    public void SellTurret()
+    {
+
+        if (isUpgraded)
+        {
+            GameSystem.money += turretBluePrint.GetSellUpgradedAmount();
+            Debug.Log(turretBluePrint.GetSellUpgradedAmount());
+        }else
+        {
+            GameSystem.money += turretBluePrint.GetSellAmount();
+        }
+        isUpgraded = false;
+
+        GameObject bEffect = (GameObject)Instantiate(buildManager.SellEffect, GetBuildPosition(), Quaternion.identity);
+        Destroy(bEffect, 5f);
+
+        Destroy(turret);
+        turretBluePrint = null;
+    }
     void OnMouseEnter()
     {
         if (EventSystem.current.IsPointerOverGameObject())

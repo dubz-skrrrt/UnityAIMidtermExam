@@ -19,7 +19,7 @@ public class BuildManager : MonoBehaviour
 
 
     public GameObject buildEffect;
-
+    public GameObject SellEffect;
     private TurretBluePrint turretToBuild;
     private Node SelectedNodeTurret;
 
