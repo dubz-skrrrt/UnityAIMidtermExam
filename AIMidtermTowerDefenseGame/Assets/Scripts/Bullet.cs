@@ -59,7 +59,7 @@ public class Bullet : MonoBehaviour
         {
             if (collider.tag == "Enemy")
             {
-                Debug.Log("explode");
+
                 Damage(collider.transform);
             }
         }

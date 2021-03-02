@@ -20,6 +20,8 @@ public class WaveSpawner : MonoBehaviour
 
     public wave[] waves;
 
+    public static int EnemiesAlive = 0;
+    public static bool wavesComplete = false;
     private int nextWave = 0;
 
     public float timeBetweenWaves = 5f;
@@ -49,10 +51,9 @@ public class WaveSpawner : MonoBehaviour
             }
             else
             {
-                WaveComplete();
+                return;
             }
         }
-
         if (waveCountDown <= 0)
         {
             if (state != SpawnState.SPAWNING)
@@ -71,14 +72,18 @@ public class WaveSpawner : MonoBehaviour
 
     void WaveComplete()
     {
-        Debug.Log("Next Wave");
+        Debug.Log(nextWave);
         state = SpawnState.COUNTING;
         waveCountDown = timeBetweenWaves;
 
         if (nextWave+1 > waves.Length -1)
         {
             nextWave = 0;
+            //waveCountDown = 0;
             Debug.Log("waves are complete");
+
+            wavesComplete = true;
+            return;   
         }else
         {
             nextWave++;
@@ -92,7 +97,7 @@ public class WaveSpawner : MonoBehaviour
         if (searchCountdown <= 0f)
         {
             searchCountdown = 1f;
-            if (GameObject.FindGameObjectWithTag("Enemy") == null && enemiesSpawned == waves[currentWave].count)
+            if (GameObject.FindGameObjectWithTag("Enemy") == null)
             {
                 return false;
             }
@@ -102,7 +107,7 @@ public class WaveSpawner : MonoBehaviour
     }
     IEnumerator SpawnWave(wave wave)
     {
-        Debug.Log("spawning wave");
+        Debug.Log("spawning wave" + wave.name);
         state = SpawnState.SPAWNING;
         GameSystem.rounds++;
         //Enemey spawn
@@ -121,5 +126,6 @@ public class WaveSpawner : MonoBehaviour
     void SpawnEnemy (Transform _enemyType)
     {
         Instantiate(_enemyType, spawnPoint.position, spawnPoint.rotation);
+        EnemiesAlive++;
     }
 }

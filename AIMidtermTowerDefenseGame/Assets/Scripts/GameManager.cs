@@ -5,11 +5,15 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static bool gameEnded;
+    public static bool gameVictory;
     public GameObject gameOverUI;
+
+    public GameObject gameVictoryUI;
 
     void Start()
     {
         gameEnded = false;
+        gameVictory = false;
     }
     void Update()
     {
@@ -20,6 +24,15 @@ public class GameManager : MonoBehaviour
         if (GameSystem.Lives <=0)
         {
             EndGame();
+        }
+
+        if (gameVictory)
+        {
+            return;
+        }
+        if (WaveSpawner.wavesComplete)
+        {
+            EndWithVictory();
         }
          //testing code
         // if (Input.GetKeyDown("e"))
@@ -32,5 +45,11 @@ public class GameManager : MonoBehaviour
     {
         gameEnded = true;
         gameOverUI.SetActive(true);
+    }
+
+    void EndWithVictory()
+    {
+        gameVictory = true;
+        gameVictoryUI.SetActive(true);
     }
 }

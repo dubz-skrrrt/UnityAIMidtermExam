@@ -19,6 +19,12 @@ public class CameraController : MonoBehaviour
             this.enabled = false;
             return;
         }
+
+        if (GameManager.gameVictory)
+        {
+            this.enabled = false;
+            return;
+        }
         //test
         // if (Input.GetKeyDown (KeyCode.Escape))
         // {

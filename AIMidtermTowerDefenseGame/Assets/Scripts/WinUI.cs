@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-public class GameOver : MonoBehaviour
+public class WinUI : MonoBehaviour
 {
     public Text roundText;
     
@@ -16,6 +16,7 @@ public class GameOver : MonoBehaviour
 
     public void Retry()
     {
+        WaveSpawner.wavesComplete = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         sceneFade.FadeToScene(SceneManager.GetActiveScene().name);
     }

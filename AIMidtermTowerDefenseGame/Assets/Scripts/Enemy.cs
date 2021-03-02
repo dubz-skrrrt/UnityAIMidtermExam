@@ -2,16 +2,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class Enemy : MonoBehaviour
 {
     public float startSpeed = 10f;
     [HideInInspector]
     public float speed;
     
-    public float health;
+    public float startHealth = 100f;
+    private float health;
     public int killReward = 10;
+    [Header("Enemy Att")]
+    public Image healthBar;
 
+    [Header("Damage Effects")]
     public GameObject DeathEffect;
     public Color slowFXColor;
     public Color damageFXColor;
@@ -26,6 +30,7 @@ public class Enemy : MonoBehaviour
         FX = GetComponent<Renderer>();
         startColor = FX.materials[0].color;
         speed = startSpeed;
+        health = startHealth;
     }
 
     void Update()
@@ -37,7 +42,7 @@ public class Enemy : MonoBehaviour
         health -= amountOfDamage;
         damageTaken = true;
         StartCoroutine(DelayFX());
-        
+        healthBar.fillAmount = health / startHealth;
         if (health <= 0)
         {
             Die();
@@ -57,6 +62,9 @@ public class Enemy : MonoBehaviour
 
         GameObject DEffect = (GameObject)Instantiate(DeathEffect, transform.position, Quaternion.identity);
         Destroy(DEffect, 5f);
+
+        WaveSpawner.EnemiesAlive--;
+        
         Destroy(gameObject);
     }
 
