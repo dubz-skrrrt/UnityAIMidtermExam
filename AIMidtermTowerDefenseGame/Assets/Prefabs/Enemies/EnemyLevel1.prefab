@@ -104,6 +104,7 @@ MonoBehaviour:
   killReward: 10
   DeathEffect: {fileID: 6410742128271958936, guid: 56df057bac703594a92117097cef505a, type: 3}
   slowFXColor: {r: 0.08410466, g: 0.085625246, b: 0.509434, a: 0}
+  damageFXColor: {r: 0.3679245, g: 0.050329305, b: 0.050329305, a: 0}
 --- !u!64 &8543223061747862595
 MeshCollider:
   m_ObjectHideFlags: 0

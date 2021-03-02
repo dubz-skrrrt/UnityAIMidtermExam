@@ -98,4 +98,5 @@ MonoBehaviour:
   target: {fileID: 0}
   AOEradius: 0
   impactEffect: {fileID: 4552842456892930952, guid: 62bce4238c272e245b78c93293151ee0, type: 3}
-  speed: 50
+  speed: 40
+  TurretDamage: 50

@@ -14,30 +14,30 @@ public class Enemy : MonoBehaviour
 
     public GameObject DeathEffect;
     public Color slowFXColor;
-    private Renderer slowFX;
+    public Color damageFXColor;
+    private Renderer FX;
     private Color startColor;
-
+    private bool damageTaken = false;
+    private bool slowDamage = false;
 
 
     void Start()
     {
-        slowFX = GetComponent<Renderer>();
-        startColor = slowFX.materials[0].color;
+        FX = GetComponent<Renderer>();
+        startColor = FX.materials[0].color;
         speed = startSpeed;
     }
 
     void Update()
     {
-        if (speed < startSpeed)
-        {
-            slowFX.materials[0].color = slowFXColor;
-        }else{
-            slowFX.materials[0].color =startColor;
-        }
+       DmgFX();
     }
     public void TakeDamage(float amountOfDamage)
     {
         health -= amountOfDamage;
+        damageTaken = true;
+        StartCoroutine(DelayFX());
+        
         if (health <= 0)
         {
             Die();
@@ -46,6 +46,7 @@ public class Enemy : MonoBehaviour
 
     public void Slow(float percent)
     {
+        slowDamage = true;
         speed = startSpeed * (1f - percent);
 
     }
@@ -57,6 +58,30 @@ public class Enemy : MonoBehaviour
         GameObject DEffect = (GameObject)Instantiate(DeathEffect, transform.position, Quaternion.identity);
         Destroy(DEffect, 5f);
         Destroy(gameObject);
+    }
+
+    void DmgFX()
+    {
+        if (damageTaken)
+        {
+            FX.materials[1].color = damageFXColor;
+        }else{
+            FX.materials[1].color = startColor;
+        }
+        
+        if (slowDamage)
+        {
+            FX.materials[0].color = slowFXColor;
+        }else{
+            FX.materials[0].color =startColor;
+        }
+    }
+
+    IEnumerator DelayFX()
+    {
+        yield return new WaitForSeconds(1f);
+        slowDamage = false;
+        damageTaken = false;
     }
 
 }

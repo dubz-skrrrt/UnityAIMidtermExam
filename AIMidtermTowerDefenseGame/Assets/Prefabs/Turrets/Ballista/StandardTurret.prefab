@@ -354,8 +354,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rangeOfTurret: 10
-  fireRate: 1
+  bulletPrefab: {fileID: 4847595505268639492, guid: 27874c113364298459dd259a0815edbb, type: 3}
+  fireRate: 0.9
+  useLaser: 0
+  lineRend: {fileID: 0}
+  impactEffect: {fileID: 0}
+  impactLight: {fileID: 0}
+  DOT: 10
+  slowPCT: 0.5
   PartToRotate: {fileID: 8623983482135490066}
   turnSpeed: 5
-  bulletPrefab: {fileID: 4847595505268639492, guid: 27874c113364298459dd259a0815edbb, type: 3}
   FirePoint: {fileID: 4861766649237332177}

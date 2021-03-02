@@ -239,10 +239,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rangeOfTurret: 7
+  bulletPrefab: {fileID: 2733519606269065149, guid: a0d98be0ec131a946acf189049055756, type: 3}
   fireRate: 0.5
+  useLaser: 0
+  lineRend: {fileID: 0}
+  impactEffect: {fileID: 0}
+  impactLight: {fileID: 0}
+  DOT: 10
+  slowPCT: 0.5
   PartToRotate: {fileID: 6312361176467923091}
   turnSpeed: 10
-  bulletPrefab: {fileID: 2733519606269065149, guid: 74249963a1ecdfc4dab33d0a68c98c86, type: 3}
   FirePoint: {fileID: 4295416256902286911}
 --- !u!1 &8422289956536398490
 GameObject:

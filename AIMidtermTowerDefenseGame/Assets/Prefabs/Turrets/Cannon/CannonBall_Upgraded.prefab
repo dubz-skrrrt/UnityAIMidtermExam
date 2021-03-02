@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8730690595726158505}
   - component: {fileID: 2916472010790294664}
   m_Layer: 0
-  m_Name: CannonBall
+  m_Name: CannonBall_Upgraded
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8fd960edea7bc364ba00831b61a034c4, type: 2}
+  - {fileID: 2100000, guid: 0a2fd0685c0f30c40a9c55a937da830d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -109,7 +109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  AOEradius: 3
+  AOEradius: 3.5
   impactEffect: {fileID: 7317149038878873382, guid: aafcf051a45c38c4096dfa8fe0af9891, type: 3}
   speed: 20
-  TurretDamage: 25
+  TurretDamage: 40
